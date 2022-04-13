@@ -41,13 +41,20 @@ public class TwitterApiClient {
         final Response response = sendRequest(url);
         if (response.body() == null) return null;
         final String resString = response.body().string();
-        System.out.println(resString);
         return genson.deserialize(resString, AccountData.class);
     }
 
     public Account getAccountFromUsername(String username) throws IOException {
         AccountData data = getDataFromUsername(username);
-        System.out.println(data);
         return new Account(data.data.get("name"), data.data.get("id"), data.data.get("username"));
+    }
+
+    public TweetSet getTweetFromUser(String userId) throws IOException {
+        final String url = twittApi + "users/" + userId + "/tweets";
+        final Response response = sendRequest(url);
+        if (response.body() == null) return null;
+        final String resString = response.body().string();
+        System.out.println(resString);
+        return genson.deserialize(resString, TweetSet.class);
     }
 }
