@@ -24,6 +24,15 @@ public class DatabaseManager {
         }
     }
 
+    public void close() {
+        try {
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addUser(Account account) {
         try {
             statement.executeUpdate("insert into user values(" + account.getId() + ", '" + account.getName() + "', '" + account.getUsername() + "');");

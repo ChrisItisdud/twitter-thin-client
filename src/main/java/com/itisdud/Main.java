@@ -66,8 +66,12 @@ public class Main {
                         else currentUser = toChoose;
                         break;
                     case "get":
-                        TweetSet response = tac.getTweetFromUser(currentUser.getId());
-                        System.out.println(response.getData());
+                        if (currentUser == null) {
+                            System.out.println("Select a user first");
+                        } else {
+                            TweetSet response = tac.getTweetFromUser(currentUser.getId());
+                            System.out.println(response.getData());
+                        }
                         break;
                     case "exit":
                         run = false;
@@ -80,5 +84,6 @@ public class Main {
                 e.printStackTrace();
             }
         }
+        dbm.close();
     }
 }
