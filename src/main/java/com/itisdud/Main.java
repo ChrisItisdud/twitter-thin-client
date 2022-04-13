@@ -27,7 +27,9 @@ public class Main {
         TwitterApiClient tac = new TwitterApiClient(apiKey, secKey, bearerToken);
         //actual program
         try {
-            System.out.println(tac.getAccountFromUsername("Itisdud"));
+            Account test = tac.getAccountFromUsername("Itisdud");
+            System.out.println(test);
+            dbm.addUser(test);
         } catch (Exception e) {
             e.printStackTrace();
         }
