@@ -70,7 +70,7 @@ public class Main {
                             System.out.println("Select a user first");
                         } else {
                             TweetSet response = tac.getTweetFromUser(currentUser.getId());
-                            System.out.println(response.getData());
+                            System.out.println(response);
                         }
                         break;
                     case "exit":

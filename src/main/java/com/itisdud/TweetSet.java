@@ -1,22 +1,28 @@
 package com.itisdud;
 
+import java.util.Map;
+
 public class TweetSet {
-    private String data;
+    private Tweet[] data;
 
     public TweetSet() {
 
     }
 
-    public String getData() {
+    public void setData(Tweet[] data) {
+        this.data = data;
+    }
+
+    public Tweet[] getData() {
         return data;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("");
         for(Tweet t : data){
-            sb.append(t.getText()).append("\n\n");
+            sb.append(t.getText()).append("\n\n----------------------------\n");
         }
         return sb.toString();
-    }*/
+    }
 }
