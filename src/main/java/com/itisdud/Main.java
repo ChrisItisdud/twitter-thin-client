@@ -60,6 +60,11 @@ public class Main {
                         dbm.addUser(addAcc);
                         currentUser = addAcc;
                         break;
+                    case "choose":
+                        Account toChoose = dbm.getUser(command.split(" ")[1]);
+                        if (toChoose == null) System.out.println("Database does not know this user!");
+                        else currentUser = toChoose;
+                        break;
                     case "get":
                         TweetSet response = tac.getTweetFromUser(currentUser.getId());
                         System.out.println(response.getData());
