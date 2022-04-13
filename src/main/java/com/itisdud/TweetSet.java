@@ -1,7 +1,5 @@
 package com.itisdud;
 
-import java.util.Map;
-
 public class TweetSet {
     private Tweet[] data;
 
@@ -20,7 +18,7 @@ public class TweetSet {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("");
-        for(Tweet t : data){
+        for (Tweet t : data) {
             sb.append(t.getText()).append("\n\n----------------------------\n");
         }
         return sb.toString();

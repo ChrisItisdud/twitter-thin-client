@@ -1,14 +1,11 @@
 package com.itisdud;
 
-import com.owlike.genson.GenericType;
 import com.owlike.genson.Genson;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class TwitterApiClient {
     private final OkHttpClient client;
