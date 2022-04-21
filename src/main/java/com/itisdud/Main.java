@@ -8,24 +8,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //init
-        final String dir = "D:/programme/apikeys/twitter.txt";
+        //get api key
+        System.out.println("Where did you locate your file containing the API key?");
+        String dir;
         String apiKey = "";
         String secKey = "";
         String bearerToken = "";
-        try (BufferedReader br = new BufferedReader(new FileReader(dir))) {
-            br.readLine();
-            apiKey = br.readLine();
-            br.readLine();
-            secKey = br.readLine();
-            br.readLine();
-            bearerToken = br.readLine();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        boolean success = false;
+        do {
+            dir = scanner.nextLine();
+            try (BufferedReader br = new BufferedReader(new FileReader(dir))) {
+                br.readLine();
+                apiKey = br.readLine();
+                br.readLine();
+                secKey = br.readLine();
+                br.readLine();
+                bearerToken = br.readLine();
+                success = true;
+            } catch (Exception e) {
+                System.out.println("The following error occured: " + e.toString());
+                System.out.println("Please try again.");
+            }
+        } while (!success);
         //init database
         System.out.println("Reinitialise Database? y/n");
-        boolean success = false;
+        success = false;
         boolean decision = false;
         do {
             String userDec = scanner.nextLine();
