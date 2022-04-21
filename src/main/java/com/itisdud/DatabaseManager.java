@@ -67,4 +67,12 @@ public class DatabaseManager {
             return new ArrayList<>();
         }
     }
+
+    public void deleteUser(String username) {
+        try {
+            statement.execute("delete from user where username = '"+username+"';");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

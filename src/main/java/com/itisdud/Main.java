@@ -107,8 +107,16 @@ public class Main {
                             System.out.println("============================================");
                         }
                         break;
+                    case "delete":
+                        dbm.deleteUser(command.split(" ")[1]);
+                        if(currentUser!=null) {
+                            if (currentUser.getUsername().equals(command.split(" ")[1]))
+                                currentUser = null;
+                        }
+                        break;
                     case "exit":
                         run = false;
+                        System.out.println("Exiting...");
                         break;
                     default:
                         System.out.println("Invalid command");
@@ -118,7 +126,10 @@ public class Main {
                 e.printStackTrace();
             }
         }
+        System.out.println("Closing database manager...");
         dbm.close();
+        scanner.close();
+        System.out.println("Closing program...");
         return; //program won't stop without return statement
     }
 }
