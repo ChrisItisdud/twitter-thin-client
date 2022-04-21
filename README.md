@@ -27,4 +27,6 @@ The client supports the following commands:
 
 ``getall`` - lets you read through all registered users' ten most recent tweets. Registered users are all users added to the database earlier.
 
+``delete $username`` - deletes that user
+
 ``exit`` - closes the client.
