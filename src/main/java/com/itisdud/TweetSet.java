@@ -19,7 +19,7 @@ public class TweetSet {
     public String toString() {
         StringBuilder sb = new StringBuilder("");
         for (Tweet t : data) {
-            sb.append(t.getText()).append("\n\n----------------------------\n");
+            sb.append(t.toString()).append("\n\n----------------------------\n");
         }
         return sb.toString();
     }

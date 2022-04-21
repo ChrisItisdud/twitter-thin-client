@@ -47,11 +47,11 @@ public class TwitterApiClient {
     }
 
     public TweetSet getTweetFromUser(String userId) throws IOException {
-        final String url = twittApi + "users/" + userId + "/tweets";
+        final String url = twittApi + "users/" + userId + "/tweets?tweet.fields=public_metrics";
         final Response response = sendRequest(url);
         if (response.body() == null) return null;
         final String resString = response.body().string();
-        System.out.println(resString);
+        //System.out.println(resString);
         return genson.deserialize(resString, TweetSet.class);
     }
 }

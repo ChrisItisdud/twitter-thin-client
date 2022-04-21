@@ -2,6 +2,7 @@ package com.itisdud;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -70,7 +71,33 @@ public class Main {
                             System.out.println("Select a user first");
                         } else {
                             TweetSet response = tac.getTweetFromUser(currentUser.getId());
-                            System.out.println(response);
+                            for (Tweet t : response.getData()) {
+                                System.out.println("view next tweet? y/n");
+                                String cmd = scanner.nextLine();
+                                if (cmd.equals("y")) {
+                                    System.out.println(t);
+                                } else break;
+                            }
+                            System.out.println("End of tweet set!");
+                        }
+                        break;
+                    case "getall":
+                        List<Account> accounts = dbm.getAllUsers();
+                        for (Account a : accounts) {
+                            System.out.println("view Tweets from user " + a.getName() + "(" + a.getUsername() + ")? y/n");
+                            String cmd = scanner.nextLine();
+                            if (cmd.equals("n")) continue;
+                            TweetSet response = tac.getTweetFromUser(a.getId());
+                            System.out.println("Tweets from user " + a.getName() + "(" + a.getUsername() + ")");
+                            System.out.println("============================================");
+                            for (Tweet t : response.getData()) {
+                                System.out.println("view next tweet? y/n");
+                                cmd = scanner.nextLine();
+                                if (cmd.equals("y")) {
+                                    System.out.println(t);
+                                } else break;
+                            }
+                            System.out.println("============================================");
                         }
                         break;
                     case "exit":
@@ -85,5 +112,6 @@ public class Main {
             }
         }
         dbm.close();
+        return; //program won't stop without return statement
     }
 }

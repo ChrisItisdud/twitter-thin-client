@@ -1,6 +1,8 @@
 package com.itisdud;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseManager {
     private Connection connection;
@@ -50,6 +52,19 @@ public class DatabaseManager {
             return null;
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public List<Account> getAllUsers() {
+        try {
+            ResultSet rs = statement.executeQuery("select * from user;");
+            List<Account> result = new ArrayList<>();
+            while (rs.next()) {
+                result.add(new Account(rs.getString("name"), rs.getString("id"), rs.getString("username")));
+            }
+            return result;
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
     }
 }
